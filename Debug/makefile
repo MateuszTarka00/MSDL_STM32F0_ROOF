@@ -16,6 +16,15 @@ RM := rm -rf
 -include Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/CANopenNode_STM32/subdir.mk
+-include Core/CANopenNode/storage/subdir.mk
+-include Core/CANopenNode/extra/subdir.mk
+-include Core/CANopenNode/309/subdir.mk
+-include Core/CANopenNode/305/subdir.mk
+-include Core/CANopenNode/304/subdir.mk
+-include Core/CANopenNode/303/subdir.mk
+-include Core/CANopenNode/301/subdir.mk
+-include Core/CANopenNode/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

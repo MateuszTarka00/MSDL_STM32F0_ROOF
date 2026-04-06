@@ -22,6 +22,15 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/CANopenNode/301 \
+Core/CANopenNode/303 \
+Core/CANopenNode/304 \
+Core/CANopenNode/305 \
+Core/CANopenNode/309 \
+Core/CANopenNode \
+Core/CANopenNode/extra \
+Core/CANopenNode/storage \
+Core/CANopenNode_STM32 \
 Core/Src \
 Core/Startup \
 Drivers/STM32F0xx_HAL_Driver/Src \
