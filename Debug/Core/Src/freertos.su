@@ -1,4 +1,0 @@
-../Core/Src/freertos.c:88:6:MX_FREERTOS_Init	8	static
-../Core/Src/freertos.c:136:6:inputCheck	16	static
-../Core/Src/freertos.c:154:6:canOpenManager	16	static
-../Core/Src/freertos.c:172:6:tpdoRequester	16	static

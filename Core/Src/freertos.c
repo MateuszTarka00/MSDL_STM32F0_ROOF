@@ -25,12 +25,27 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "CO_app_STM32.h"
+#include "tim.h"
+#include "can.h"
+#include "NMT_functions.h"
+#include "OD.h"
+#include "IO_MappingFunctions.h"
+#include "softwareTimer_ms.h"
+#include "DigitalInputs.h"
+#include "DigitalOutput.h"
+#include "iwdg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#define CANOPEN_TASK_DELAY_MS 			1
+#define TPDO_REQUESTER_TASK_DELAY_MS 	1
+#define INPUT_CHECK_TASK_DELAY_MS		20
 
+#define CANOPEN_ID						24
+#define COB_ID							0x480 + CANOPEN_ID
+#define TPDO_INDEX						0x1800
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -136,10 +151,60 @@ void MX_FREERTOS_Init(void) {
 void inputCheck(void *argument)
 {
   /* USER CODE BEGIN inputCheck */
-  /* Infinite loop */
+	  /* Infinite loop */
+  const OD_entry_t *entry = OD_find(OD, 0x6100);
+
   for(;;)
   {
-    osDelay(1);
+	HAL_IWDG_Refresh(&hiwdg);
+	for(uint8_t subIndex = 1; subIndex <= 10; ++subIndex)
+	{
+		OD_IO_t io;
+		{
+			ODR_t result = OD_getSub(entry, subIndex, &io, 0);
+		}
+
+		//check if input is enabled
+		uint8_t enabledInput = 0;
+		uint8_t *identifier = (uint8_t *)io.stream.dataOrig;
+		uint8_t state = 0;
+
+		for(uint8_t i = 0; i < 5; ++i)
+		{
+			if(identifier[i])
+			{
+				enabledInput = 1;
+				break;
+			}
+		}
+
+		if(enabledInput)
+		{
+			state = HAL_GPIO_ReadPin(digitalInput[subIndex - 1].port, digitalInput[subIndex - 1].pin);
+			identifier[5] = state;
+		}
+
+		// check if input has changed
+		uint8_t inputChanged = memcmp(virtualInputMapping[subIndex - 1].InputFunctionID, identifier, sizeof(virtualInputMapping[subIndex - 1].InputFunctionID)) == 0;
+
+		if(inputChanged)
+		{
+			continue;
+		}
+
+		memcpy(virtualInputMapping[subIndex - 1].InputFunctionID, identifier, sizeof(virtualInputMapping[subIndex - 1].InputFunctionID));
+
+		if(virtualInputMapping[subIndex - 1].pending) //check if already pending
+		{
+			continue;
+		}
+
+		virtualInputMapping[subIndex - 1].pending = 1;
+		++pendingVirtualInputMappings;
+
+	}
+
+	osDelay(pdMS_TO_TICKS(INPUT_CHECK_TASK_DELAY_MS));
   }
   /* USER CODE END inputCheck */
 }
@@ -154,10 +219,59 @@ void inputCheck(void *argument)
 void canOpenManager(void *argument)
 {
   /* USER CODE BEGIN canOpenManager */
+  OD_extension_t virtualInputMappingExtension = {0, virtualInputMappingRead, OD_writeOriginal, 0};
+  ODR_t result = OD_extension_init(OD_find(OD, 0x6010), &virtualInputMappingExtension);
+
+  OD_extension_t virtualOutputMappingExtension = {0, OD_readOriginal, virtualOutputMappingWrite, 0};
+  result = OD_extension_init(OD_find(OD, 0x6011), &virtualOutputMappingExtension);
+
+  OD_extension_t outputGroupExtension = {0, OD_readOriginal, outputGroupWrite, 0};
+  result  = OD_extension_init(OD_find(OD, 0x6200), &outputGroupExtension);
+
+  OD_extension_t saveParametersExtension = {0, OD_readOriginal, saveParametersWrite, 0};
+  result  = OD_extension_init(OD_find(OD, 0x1010), &saveParametersExtension);
+
+  canOpenNodeSTM32.CANHandle = &hfdcan1;
+  canOpenNodeSTM32.HWInitFunction = MX_FDCAN1_Init;
+  canOpenNodeSTM32.timerHandle = &htim14;
+  canOpenNodeSTM32.desiredNodeID = CANOPEN_ID;
+  canOpenNodeSTM32.baudrate = 250;
+
+  uint32_t correctTpdo1CobId = COB_ID;
+
+  //Set COB-ID for TPDO
+  OD_entry_t *tpdoCommEntry = OD_find(OD, TPDO_INDEX);
+  if (tpdoCommEntry != NULL) {
+	  OD_IO_t io;
+
+	  // Get subindex 1 — COB-ID
+	  if (OD_getSub(tpdoCommEntry, 1, &io, 0) == ODR_OK) {
+		  uint32_t *cobIdPtr = (uint32_t *)io.stream.dataOrig;
+
+		  // Disable PDO temporarily (set bit 31)
+		  *cobIdPtr |= 0x80000000;
+
+		  // Update COB-ID
+		  *cobIdPtr = correctTpdo1CobId;
+
+		  // Re-enable PDO (clear bit 31)
+		  *cobIdPtr &= ~0x80000000;
+	  }
+  }
+
+  canopen_app_init(&canOpenNodeSTM32);
+  CO_NMT_initCallbackChanged(canOpenNodeSTM32.canOpenStack->NMT, nmtStateChangedCallback);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	HAL_IWDG_Refresh(&hiwdg);
+	HAL_GPIO_WritePin(CAN_OK_GPIO_Port, CAN_OK_Pin , canOpenNodeSTM32.outStatusLEDGreen);
+	HAL_GPIO_WritePin(CAN_FAULT_GPIO_Port, CAN_FAULT_Pin, canOpenNodeSTM32.outStatusLEDRed);
+
+	canopen_app_interrupt();
+	canopen_app_process();
+
+	ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(CANOPEN_TASK_DELAY_MS));
   }
   /* USER CODE END canOpenManager */
 }
@@ -172,10 +286,29 @@ void canOpenManager(void *argument)
 void tpdoRequester(void *argument)
 {
   /* USER CODE BEGIN tpdoRequester */
+	uint8_t *flags6010 = OD_getFlagsPDO(OD_find(OD,0x6010));
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  HAL_IWDG_Refresh(&hiwdg);
+	  osDelay(pdMS_TO_TICKS(TPDO_REQUESTER_TASK_DELAY_MS));
+
+	  if(pendingVirtualInputMappings == 0) //check if there is any virtual input mapping pending
+	  {
+		  continue;
+	  }
+
+	  if(OD_TPDOtransmitted(flags6010, 0) == false) //check if there is any 6010 Od tpdo transmited
+	  {
+		  continue;
+	  }
+
+	  if(canOpenNodeSTM32.canOpenStack->TPDO[0].CANtxBuff->bufferFull == true)
+	  {
+		  continue;
+	  }
+
+	  OD_requestTPDO(flags6010, 0);
   }
   /* USER CODE END tpdoRequester */
 }

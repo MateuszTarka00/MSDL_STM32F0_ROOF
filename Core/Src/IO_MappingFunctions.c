@@ -122,3 +122,84 @@ ODR_t outputGroupWrite(OD_stream_t* const stream, const void* const buffer, cons
 
 	return ODR_OK;
 }
+
+
+ODR_t saveParametersWrite(OD_stream_t* const stream, const void* const buffer, const OD_size_t size, OD_size_t* const bytesWritten)
+{
+	ODR_t result = OD_writeOriginal(stream, buffer, size, bytesWritten);
+	OD_entry_t *entry;
+
+	CO_LOCK_OD(canOpenNodeSTM32.canOpenStack->CANmodule);
+
+	if(result != ODR_OK)
+	{
+		return result;
+	}
+
+	uint8_t subIndex = stream->subIndex;
+	const uint8_t *save = (const uint8_t *)buffer;
+	uint32_t messageSize = (uint32_t)(*bytesWritten);
+
+	if(save[messageSize - 1] && subIndex > 0)
+	{
+		uint8_t valuesChanged = 0;
+
+		entry = OD_find(OD, 0x6100);
+
+		for(uint8_t subIndex = 1; subIndex <= OD_CNT_ARR_6100; ++subIndex)
+		{
+			OD_IO_t io;
+			{
+				OD_getSub(entry, subIndex, &io, false);
+			}
+
+			uint8_t identifier[6];
+
+			OD_stream_t ioStreamCopy = io.stream;
+			{
+				OD_size_t bytesRead;
+				io.read(&io.stream, identifier, sizeof(identifier), &bytesRead);
+			}
+			if(memcmp(identifier, flash_virtualInputOutput.virtualInputs[subIndex-1], 5))
+			{
+				valuesChanged = 1;
+			}
+
+			memcpy(flash_virtualInputOutput.virtualInputs[subIndex-1], identifier, 5);	// save input function
+		}
+
+		entry = OD_find(OD, 0x6200);
+
+		for(uint8_t subIndex = 1; subIndex <= OD_CNT_ARR_6200; ++subIndex)
+		{
+			OD_IO_t io;
+			{
+				OD_getSub(entry, subIndex, &io, false);
+			}
+
+			uint8_t identifier[6];
+
+			OD_stream_t ioStreamCopy = io.stream;
+			{
+				OD_size_t bytesRead;
+				io.read(&io.stream, identifier, sizeof(identifier), &bytesRead);
+			}
+			if(memcmp(identifier, flash_virtualInputOutput.virtualOutputs[subIndex-1], 5))
+			{
+				valuesChanged = 1;
+			}
+
+			memcpy(flash_virtualInputOutput.virtualOutputs[subIndex-1], identifier, 5);	// save output function
+		}
+
+		if(valuesChanged)
+		{
+			Flash_ErasePage(FLASH_PAGE);
+			Flash_WriteStruct(FLASH_PAGE, &flash_virtualInputOutput);
+		}
+	}
+
+	CO_UNLOCK_OD(canOpenNodeSTM32.canOpenStack->CANmodule);
+
+	return ODR_OK;
+}
