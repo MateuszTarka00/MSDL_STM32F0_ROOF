@@ -43,7 +43,7 @@
 #define TPDO_REQUESTER_TASK_DELAY_MS 	1
 #define INPUT_CHECK_TASK_DELAY_MS		20
 
-#define CANOPEN_ID						24
+#define CANOPEN_ID						11
 #define COB_ID							0x480 + CANOPEN_ID
 #define TPDO_INDEX						0x1800
 /* USER CODE END PTD */
@@ -157,7 +157,7 @@ void inputCheck(void *argument)
   for(;;)
   {
 	HAL_IWDG_Refresh(&hiwdg);
-	for(uint8_t subIndex = 1; subIndex <= 10; ++subIndex)
+	for(uint8_t subIndex = 1; subIndex <= OD_CNT_ARR_6100; ++subIndex)
 	{
 		OD_IO_t io;
 		{
@@ -231,9 +231,9 @@ void canOpenManager(void *argument)
   OD_extension_t saveParametersExtension = {0, OD_readOriginal, saveParametersWrite, 0};
   result  = OD_extension_init(OD_find(OD, 0x1010), &saveParametersExtension);
 
-  canOpenNodeSTM32.CANHandle = &hfdcan1;
-  canOpenNodeSTM32.HWInitFunction = MX_FDCAN1_Init;
-  canOpenNodeSTM32.timerHandle = &htim14;
+  canOpenNodeSTM32.CANHandle = &hcan;
+  canOpenNodeSTM32.HWInitFunction = MX_CAN_Init;
+  canOpenNodeSTM32.timerHandle = &htim2;
   canOpenNodeSTM32.desiredNodeID = CANOPEN_ID;
   canOpenNodeSTM32.baudrate = 250;
 

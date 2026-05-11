@@ -36,7 +36,8 @@
 #define CO_CONFIG_HB_CONS (CO_CONFIG_HB_CONS_ENABLE | \
                            CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
                            CO_CONFIG_GLOBAL_FLAG_TIMERNEXT | \
-                           CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC)
+                           CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC | \
+						   CO_CONFIG_FLAG_CALLBACK_PRE)
 #endif
 
 #if ((CO_CONFIG_HB_CONS) & CO_CONFIG_HB_CONS_ENABLE) || defined CO_DOXYGEN

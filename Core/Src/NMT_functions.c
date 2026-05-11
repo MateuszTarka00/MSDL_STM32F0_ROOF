@@ -10,9 +10,6 @@
 #include "OD.h"
 #include "flash.h"
 
-//#define FLASH_PAGE 255 //For 256 flash pages
-#define FLASH_PAGE 127 //For 128 flash pages
-
 volatile CANopenNodeSTM32 canOpenNodeSTM32;
 
 void nmtStateChangedCallback(const CO_NMT_internalState_t state)
@@ -23,7 +20,7 @@ void nmtStateChangedCallback(const CO_NMT_internalState_t state)
 
 	if(state != CO_NMT_OPERATIONAL)
 	{
-		Flash_ReadStruct(FLASH_PAGE, &flash_virtualInputOutput);
+		Flash_ReadStruct(&flash_virtualInputOutput);
 
 		uint8_t isNotEmpty = !checkStructEmpty(&flash_virtualInputOutput);
 

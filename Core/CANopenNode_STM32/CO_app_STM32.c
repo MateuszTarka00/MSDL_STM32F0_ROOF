@@ -203,6 +203,8 @@ canopen_app_process() {
     /* get time difference since last function call */
     time_current = HAL_GetTick();
 
+    static uint32_t prevBusError = 0;
+
     if ((time_current - time_old) > 0) { // Make sure more than 1ms elapsed
         /* CANopen process */
         CO_NMT_reset_cmd_t reset_status;
@@ -224,6 +226,21 @@ canopen_app_process() {
             log_printf("CANopenNode Device Reset\n");
             HAL_NVIC_SystemReset(); // Reset the STM32 Microcontroller
         }
+
+        uint32_t esr = canOpenNodeSTM32.CANHandle->Instance->ESR;
+
+        if(((esr & CAN_ESR_EPVF) || (esr & CAN_ESR_BOFF)) && !(prevBusError & CAN_ESR_EPVF || prevBusError & CAN_ESR_BOFF))
+        {
+			/* delete objects from memory */
+			HAL_TIM_Base_Stop_IT(canopenNodeSTM32->timerHandle);
+			CO_CANsetConfigurationMode((void*)canopenNodeSTM32);
+			CO_delete(CO);
+			log_printf("CANopenNode Reset Communication request\n");
+			canopen_app_init(canopenNodeSTM32); // Reset Communication routine
+			CO_NMT_initCallbackChanged(canopenNodeSTM32->canOpenStack->NMT, nmtStateChangedCallback);
+        }
+
+        prevBusError = esr;
     }
 }
 

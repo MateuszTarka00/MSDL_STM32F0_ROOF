@@ -28,7 +28,7 @@ void digitalOutputsInitialize(void);
 void processFunctionData(DigitalOutput *digitalOutput, const uint8_t functionData);
 void toggleOutputPin(void * param);
 
-extern DigitalOutput digitaloutputs[12];
+extern DigitalOutput digitaloutputs[16];
 
 
 #endif /* INC_DIGITALOUTPUT_H_ */

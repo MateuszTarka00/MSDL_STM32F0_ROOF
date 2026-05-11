@@ -10,6 +10,8 @@
 #include "canOpen_data.h"
 #include "OD.h"
 #include "DigitalOutput.h"
+#include "NMT_functions.h"
+#include "flash.h"
 
 VirtualInputMapping virtualInputMapping[VIRTUAL_INPUT_MAPPING_SIZE];
 uint8_t pendingVirtualInputMappings;
@@ -46,7 +48,7 @@ ODR_t virtualOutputMappingWrite(OD_stream_t* const stream, const void* const buf
 
 	const OD_entry_t *entry = OD_find(OD, 0x6200);
 
-	for(uint8_t subIndex = 12; subIndex <= OD_CNT_ARR_6200; ++subIndex)
+	for(uint8_t subIndex = 5; subIndex <= OD_CNT_ARR_6200; ++subIndex)
 	{
 		uint8_t identifier[6], identifierCopy[6];
 
@@ -194,8 +196,7 @@ ODR_t saveParametersWrite(OD_stream_t* const stream, const void* const buffer, c
 
 		if(valuesChanged)
 		{
-			Flash_ErasePage(FLASH_PAGE);
-			Flash_WriteStruct(FLASH_PAGE, &flash_virtualInputOutput);
+			Flash_WriteStruct(&flash_virtualInputOutput);
 		}
 	}
 

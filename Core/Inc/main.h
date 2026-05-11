@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "cmsis_os2.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -93,14 +93,14 @@ void Error_Handler(void);
 #define IN16_GPIO_Port GPIOB
 #define IN15_Pin GPIO_PIN_14
 #define IN15_GPIO_Port GPIOB
-#define OUT16_Pin GPIO_PIN_15
-#define OUT16_GPIO_Port GPIOB
-#define OUT15_Pin GPIO_PIN_8
-#define OUT15_GPIO_Port GPIOA
-#define OUT14_Pin GPIO_PIN_9
+#define OUT13_Pin GPIO_PIN_15
+#define OUT13_GPIO_Port GPIOB
+#define OUT14_Pin GPIO_PIN_8
 #define OUT14_GPIO_Port GPIOA
-#define OUT13_Pin GPIO_PIN_10
-#define OUT13_GPIO_Port GPIOA
+#define OUT15_Pin GPIO_PIN_9
+#define OUT15_GPIO_Port GPIOA
+#define OUT16_Pin GPIO_PIN_10
+#define OUT16_GPIO_Port GPIOA
 #define CAN_FAULT_Pin GPIO_PIN_15
 #define CAN_FAULT_GPIO_Port GPIOA
 #define CAN_OK_Pin GPIO_PIN_3
@@ -119,7 +119,7 @@ void Error_Handler(void);
 #define OUT9_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+extern osThreadId_t canOpenManagerTHandle;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -39,8 +39,12 @@ const uint16_t impulseDurations[] =
 };
 
 
-DigitalOutput digitaloutputs[12] =
+DigitalOutput digitaloutputs[16] =
 		{
+				{0, 0, &outputsTimers[0]},
+				{0, 0, &outputsTimers[1]},
+				{0, 0, &outputsTimers[2]},
+				{0, 0, &outputsTimers[3]},
 				{OUT5_GPIO_Port, OUT5_Pin, &outputsTimers[4]},
 				{OUT6_GPIO_Port, OUT6_Pin, &outputsTimers[5]},
 				{OUT7_GPIO_Port, OUT7_Pin, &outputsTimers[6]},
@@ -65,6 +69,8 @@ void toggleOutputPin(void * param)
 void processFunctionData(DigitalOutput *digitalOutput, const uint8_t functionData)
 {
 	//enter critical section
+	if(!digitalOutput->pin &&  !digitalOutput->port)
+		return;
 
 	deInitSoftwareTimer(digitalOutput->timer);
 	uint8_t property = (functionData >> 1) & 0b111;

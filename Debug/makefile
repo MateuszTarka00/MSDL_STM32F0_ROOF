@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (12.3.rel1)
+# Toolchain: GNU Tools for STM32 (13.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -65,6 +65,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 MSDL_STM32F0_ROOF.list \
 
+OBJCOPY_HEX += \
+MSDL_STM32F0_ROOF.hex \
+
+OBJCOPY_BIN += \
+MSDL_STM32F0_ROOF.bin \
+
 
 # All Target
 all: main-build
@@ -73,8 +79,8 @@ all: main-build
 main-build: MSDL_STM32F0_ROOF.elf secondary-outputs
 
 # Tool invocations
-MSDL_STM32F0_ROOF.elf MSDL_STM32F0_ROOF.map: $(OBJS) $(USER_OBJS) C:\Projects\MSDL_STM32F0_ROOF\STM32F091CCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "MSDL_STM32F0_ROOF.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Projects\MSDL_STM32F0_ROOF\STM32F091CCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MSDL_STM32F0_ROOF.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MSDL_STM32F0_ROOF.elf MSDL_STM32F0_ROOF.map: $(OBJS) $(USER_OBJS) C:\Users\mateo\STM32CubeIDE\workspace_1.6.1\MSDL_STM32F0_ROOF\STM32F091CCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "MSDL_STM32F0_ROOF.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\mateo\STM32CubeIDE\workspace_1.6.1\MSDL_STM32F0_ROOF\STM32F091CCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MSDL_STM32F0_ROOF.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -88,12 +94,22 @@ MSDL_STM32F0_ROOF.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEP
 	@echo 'Finished building: $@'
 	@echo ' '
 
+MSDL_STM32F0_ROOF.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "MSDL_STM32F0_ROOF.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+MSDL_STM32F0_ROOF.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "MSDL_STM32F0_ROOF.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) MSDL_STM32F0_ROOF.elf MSDL_STM32F0_ROOF.list MSDL_STM32F0_ROOF.map default.size.stdout
+	-$(RM) MSDL_STM32F0_ROOF.bin MSDL_STM32F0_ROOF.elf MSDL_STM32F0_ROOF.hex MSDL_STM32F0_ROOF.list MSDL_STM32F0_ROOF.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

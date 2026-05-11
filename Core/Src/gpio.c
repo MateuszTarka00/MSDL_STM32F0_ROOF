@@ -54,11 +54,11 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, OUT6_Pin|OUT5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, OUT16_Pin|CAN_OK_Pin|OUT8_Pin|OUT7_Pin
+  HAL_GPIO_WritePin(GPIOB, OUT13_Pin|CAN_OK_Pin|OUT8_Pin|OUT7_Pin
                           |OUT12_Pin|OUT11_Pin|OUT10_Pin|OUT9_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, OUT15_Pin|OUT14_Pin|OUT13_Pin|CAN_FAULT_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, OUT14_Pin|OUT15_Pin|OUT16_Pin|CAN_FAULT_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : OUT6_Pin OUT5_Pin */
   GPIO_InitStruct.Pin = OUT6_Pin|OUT5_Pin;
@@ -83,17 +83,17 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : OUT16_Pin CAN_OK_Pin OUT8_Pin OUT7_Pin
+  /*Configure GPIO pins : OUT13_Pin CAN_OK_Pin OUT8_Pin OUT7_Pin
                            OUT12_Pin OUT11_Pin OUT10_Pin OUT9_Pin */
-  GPIO_InitStruct.Pin = OUT16_Pin|CAN_OK_Pin|OUT8_Pin|OUT7_Pin
+  GPIO_InitStruct.Pin = OUT13_Pin|CAN_OK_Pin|OUT8_Pin|OUT7_Pin
                           |OUT12_Pin|OUT11_Pin|OUT10_Pin|OUT9_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : OUT15_Pin OUT14_Pin OUT13_Pin CAN_FAULT_Pin */
-  GPIO_InitStruct.Pin = OUT15_Pin|OUT14_Pin|OUT13_Pin|CAN_FAULT_Pin;
+  /*Configure GPIO pins : OUT14_Pin OUT15_Pin OUT16_Pin CAN_FAULT_Pin */
+  GPIO_InitStruct.Pin = OUT14_Pin|OUT15_Pin|OUT16_Pin|CAN_FAULT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

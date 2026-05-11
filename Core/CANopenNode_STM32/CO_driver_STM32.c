@@ -671,6 +671,10 @@ HAL_FDCAN_TxBufferCompleteCallback(FDCAN_HandleTypeDef* hfdcan, uint32_t BufferI
 void
 HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
     prv_read_can_received_msg(hcan, CAN_RX_FIFO0, 0);
+
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    vTaskNotifyGiveFromISR(canOpenManagerTHandle, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 /**
@@ -681,6 +685,10 @@ HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
 void
 HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef* hcan) {
     prv_read_can_received_msg(hcan, CAN_RX_FIFO1, 0);
+
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    vTaskNotifyGiveFromISR(canOpenManagerTHandle, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 /**
