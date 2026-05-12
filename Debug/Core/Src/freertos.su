@@ -1,8 +1,0 @@
-C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:483:24:OD_getFlagsPDO	16	static
-C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:510:20:OD_requestTPDO	24	static
-C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:532:22:OD_TPDOtransmitted	24	static
-C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:588:21:OD_extension_init	16	static
-../Core/Src/freertos.c:103:6:MX_FREERTOS_Init	8	static
-../Core/Src/freertos.c:151:6:inputCheck	72	static
-../Core/Src/freertos.c:219:6:canOpenManager	144	static
-../Core/Src/freertos.c:286:6:tpdoRequester	24	static

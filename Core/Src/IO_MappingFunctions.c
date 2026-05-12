@@ -83,6 +83,15 @@ ODR_t virtualOutputMappingWrite(OD_stream_t* const stream, const void* const buf
 			identifierCopy[4] = 0x0f;
 		}
 
+		if(bufferU8[4] > 0x0F)
+		{
+			identifierCopy[4] |= (identifierCopy[4] << 4);
+		}
+		else
+		{
+			identifierCopy[4] &= ~(identifierCopy[4] << 4);
+		}
+
 		identifierCopy[5] = identifier[5];
 
 		if(memcmp(identifierCopy, buffer, size - 1))
