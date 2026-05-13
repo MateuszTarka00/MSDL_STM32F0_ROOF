@@ -40,38 +40,38 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  ../Core/Inc/can.h ../Core/Inc/main.h ../Core/Inc/iwdg.h \
  ../Core/Inc/tim.h ../Core/Inc/gpio.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_app_STM32.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/CANopen.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_config.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_driver_target.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_HBconsumer.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_fifo.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_PDO.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_TIME.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_GFC.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_SRDO.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSslave.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSS.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/309/CO_gateway_ascii.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h \
- C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/extra/CO_trace.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_app_STM32.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/CANopen.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_config.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_driver_target.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_HBconsumer.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_fifo.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_PDO.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_TIME.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_GFC.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_SRDO.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSslave.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSS.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/309/CO_gateway_ascii.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h \
+ C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/extra/CO_trace.h \
  ../Core/Inc/softwareTimer_ms.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
@@ -118,36 +118,36 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/iwdg.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/gpio.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_app_STM32.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/CANopen.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_config.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_driver_target.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_HBconsumer.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_fifo.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_PDO.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_TIME.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_GFC.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_SRDO.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSslave.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSS.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/309/CO_gateway_ascii.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h:
-C:/Projects/MSDL_STM32F0_ROOF/Core/CANopenNode/extra/CO_trace.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_app_STM32.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/CANopen.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_config.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode_STM32/CO_driver_target.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_driver.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_ODinterface.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_HBconsumer.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_NMT_Heartbeat.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_Emergency.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOserver.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_fifo.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_PDO.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SYNC.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_TIME.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_GFC.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/304/CO_SRDO.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSslave.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSS.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/309/CO_gateway_ascii.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/301/CO_SDOclient.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/305/CO_LSSmaster.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/303/CO_LEDs.h:
+C:/Users/mateo/STM32CubeIDE/workspace_1.6.1/MSDL_STM32F0_ROOF/Core/CANopenNode/extra/CO_trace.h:
 ../Core/Inc/softwareTimer_ms.h:

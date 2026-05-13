@@ -22,6 +22,7 @@
 "./Core/CANopenNode_STM32/CO_app_STM32.o"
 "./Core/CANopenNode_STM32/CO_driver_STM32.o"
 "./Core/CANopenNode_STM32/CO_storageBlank.o"
+"./Core/CANopenNode_STM32/OD.o"
 "./Core/Src/DigitalInputs.o"
 "./Core/Src/DigitalOutputs.o"
 "./Core/Src/IO_MappingFunctions.o"
